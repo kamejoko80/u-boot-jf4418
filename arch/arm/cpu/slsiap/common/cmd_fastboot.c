@@ -1652,11 +1652,15 @@ done_flash:
 	return fboot_response(resp, strlen(resp), FASTBOOT_TX_SYNC);
 }
 
+/* JF4418 : after running fastboot download uImage we start the Linux os here */
+extern void run_bootm(void);
+
 static int fboot_cmd_boot(const char *cmd, f_cmd_inf *inf, struct f_trans_stat *fst)
 {
-	char resp[RESP_SIZE] = "FAIL";
-	printf("*** Not IMPLEMENT ***\n");
-	return fboot_response(resp, strlen(resp), FASTBOOT_TX_SYNC);
+	char resp[RESP_SIZE] = "OKAY";
+    fboot_response(resp, strlen(resp), FASTBOOT_TX_SYNC);
+    run_bootm();
+	return 0;
 }
 
 static int fboot_cmd_format(const char *cmd, f_cmd_inf *inf, struct f_trans_stat *fst)

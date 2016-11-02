@@ -192,6 +192,18 @@ U_BOOT_CMD(
 	"boot application image from memory", bootm_help_text
 );
 
+/* JF4418 : after running fastboot download uImage we start the Linux os here */
+void run_bootm(void)
+{
+    const char *cmd = "bootm";
+    const char *subcmd = "0x48000000";
+    char *local_args[2];
+	local_args[0] = (char *)cmd;
+	local_args[1] = (char *)subcmd;
+    
+    do_bootm(&_u_boot_list_2_cmd_2_bootm, 0, 2, local_args);    
+}
+
 /*******************************************************************/
 /* bootd - boot default image */
 /*******************************************************************/
