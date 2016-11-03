@@ -2,18 +2,11 @@ dist: trusty
 language: c
 compiler: gcc
 cache: ccache
-sudo: required
 env:
   - ARCH=arm CROSS_COMPILE=arm-cortexa9-linux-gnueabihf- LOCALVERSION=-git$TRAVIS_COMMIT
 addons:
   apt:
     packages:
-    - arm-cortexa9-linux-gnueabihf
-    - debootstrap
-    - qemu-user-static
-    - binfmt-support
-    - sbuild
-    - lzop
     - wget
 script:
   - bash -ex build_uboot.sh
