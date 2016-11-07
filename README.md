@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/pdtechvn/u-boot.svg?branch=master)](https://travis-ci.org/pdtechvn/u-boot)
 
+```
 C) Copyright 2000 - 2013
 Wolfgang Denk, DENX Software Engineering, wd@denx.de.
 
@@ -6390,3 +6391,5 @@ Notes:
   u-boot mailing list. Bigger patches will be moderated. If they are
   reasonable and not too big, they will be acknowledged. But patches
   bigger than the size limit should be avoided.
+
+```
