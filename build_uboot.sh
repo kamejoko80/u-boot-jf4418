@@ -2,10 +2,10 @@
 
 FILE="arm-cortexa9-linux-gnueabihf-4.9.3.tar.xz"
 if [ -f "$FILE" ]; then
+echo "Toolchain exist"
+else
 wget https://github.com/pdtechvn/toolschain/raw/master/arm-cortexa9-linux-gnueabihf-4.9.3.tar.xz
 tar -xvf arm-cortexa9-linux-gnueabihf-4.9.3.tar.xz
-else
-echo "Toolchains exist"
 fi
 
 echo [Build u-boot...]
