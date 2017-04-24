@@ -195,12 +195,12 @@ static int mmc_make_parts(int dev, uint64_t (*parts)[2], int count)
 		l = sprintf(&cmd[p], " 0x%llx:0x%llx", parts[i][0], parts[i][1]);
 		p += l;
 	}
-	
+
 	if (p >= sizeof(cmd)) {
 		printf("** %s: cmd stack overflow : stack %d, cmd %d **\n",
 			__func__, sizeof(cmd), p);
 		while(1);
-	}	
+	}
 
 	cmd[p] = 0;
 	printf("%s\n", cmd);
@@ -1657,9 +1657,11 @@ extern void run_bootm(void);
 
 static int fboot_cmd_boot(const char *cmd, f_cmd_inf *inf, struct f_trans_stat *fst)
 {
+    void (*launch)(void) = 0x48000000;
 	char resp[RESP_SIZE] = "OKAY";
     fboot_response(resp, strlen(resp), FASTBOOT_TX_SYNC);
-    run_bootm();
+    printf("*** Launch to 0x48000000 ***\n");
+    launch();
 	return 0;
 }
 
